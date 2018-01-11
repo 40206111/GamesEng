@@ -28,8 +28,8 @@ CircleShape ball;
 RectangleShape paddles[2];
 int score1 = 0;
 int score2 = 0;
-bool ai = false;
-bool otherai = false;
+bool ai = true;
+bool otherai = true;
 int scored = 0;
 
 Font font;
@@ -48,7 +48,7 @@ void Reset()
 	{
 		score2++;
 	}
-	text.setString(score1 + "\t-\t" + score2);
+	text.setString(to_string(score1) + "\t-\t" + to_string(score2));
 	text.setPosition((gameWidth * 0.5f) - (text.getLocalBounds().width * 0.5f), 0);
 }
 
@@ -66,23 +66,30 @@ void Load()
 	paddles[0].setPosition(10 + paddleSize.x / 2, gameHeight / 2);
 	paddles[1].setPosition(gameWidth - paddleSize.x, gameHeight / 2);
 	
-	Reset();
 
 	font.loadFromFile("res/font/RobotoMono-Regular.ttf");
 	text.setFont(font);
 	text.setCharacterSize(24);
+	text.setColor(Color::Green);
+	Reset();
 }
 
 void AI(int i, float dt)
 {
 	float direction = ball.getPosition().y - paddles[i].getPosition().y;
 	direction = direction == 0 ? 0 : direction / abs(direction);
+	float topScreen = paddles[i].getPosition().y - paddleSize.y / 2;
+	float bottScreen = paddles[i].getPosition().y + paddleSize.y / 2;
 
-	if (paddles[i].getPosition().y - paddleSize.y / 2 <= 0 || direction != -1)
+	if (topScreen >= 0 && bottScreen <= gameHeight)
 	{
 		paddles[i].move(0, direction * paddleSpeed * dt);
 	}
-	else if (paddles[i].getPosition().y + paddleSize.y / 2 >= gameHeight || direction != 1)
+	else if (topScreen <= 0 && direction == 1)
+	{
+		paddles[i].move(0, direction * paddleSpeed * dt);
+	}
+	else if (bottScreen >= gameHeight && direction == -1)
 	{
 		paddles[i].move(0, direction * paddleSpeed * dt);
 	}
@@ -201,6 +208,7 @@ void Render(RenderWindow &window)
 	window.draw(paddles[0]);
 	window.draw(paddles[1]);
 	window.draw(ball);
+	window.draw(text);
 }
 
 int main()
