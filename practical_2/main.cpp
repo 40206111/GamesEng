@@ -17,7 +17,7 @@ sf::Sprite invader;
 
 void Load()
 {
-	if (!spritesheet.loadFromFile("res/img/invaders_sheet.png"))
+	if (!spritesheet.loadFromFile("bin/debug/res/img/invaders_sheet.png"))
 	{
 		cerr << "Failed to load spritesheet!" << std::endl;
 	}
