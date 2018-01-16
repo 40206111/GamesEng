@@ -4,6 +4,7 @@
 using namespace sf;
 using namespace std;
 
+//SHIP
 Ship::Ship() {};
 
 Ship::Ship(IntRect ir) : Sprite()
@@ -16,3 +17,17 @@ Ship::Ship(IntRect ir) : Sprite()
 void Ship::Update(const float &dt) {}
 
 Ship::~Ship() = default;
+
+//INVADER
+Invader::Invader() : Ship() {}
+
+Invader::Invader(sf::IntRect ir, sf::Vector2f pos) : Ship(ir)
+{
+	setOrigin(16, 16);
+	setPosition(pos);
+}
+
+void Invader::Update(const float &dt)
+{
+	Ship::Update(dt);
+}

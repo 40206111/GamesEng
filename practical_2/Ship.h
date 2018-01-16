@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+//SHIP
 class Ship : public sf::Sprite
 {
 protected:
@@ -13,4 +14,13 @@ public:
 	virtual ~Ship() = 0;
 
 	virtual void Update(const float &dt);
+};
+
+//INVADER
+class Invader : public Ship
+{
+public:
+	Invader(sf::IntRect ir, sf::Vector2f pos);
+	Invader();
+	void Update(const float &dt) override;
 };
