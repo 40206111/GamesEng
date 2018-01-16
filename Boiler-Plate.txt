@@ -2,12 +2,6 @@
 using namespace sf;
 using namespace std;
 
-const Keyboard::Key controls[2] =
-{
-	Keyboard::Left,
-	Keyboard::Right
-};
-
 int gameWidth = 800;
 int gameHeight = 600;
 
