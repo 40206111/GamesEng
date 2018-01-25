@@ -16,8 +16,17 @@ void Load()
 		cerr << "Failed to load spritesheet!" << std::endl;
 	}
 
-	Invader* inv = new Invader(sf::IntRect(0, 0, 32, 32), { 100, 100 });
-	ships.push_back(inv);
+
+	for (int r = 0; r < invaders_rows; ++r)
+	{
+		auto rect = IntRect(0 + (r*32), 0, 32, 32);
+		for (int c = 0; c < invaders_columns; ++c)
+		{
+			Vector2f position = Vector2f((((gameWidth/2)-((invaders_columns/2) * 40)) + 16) + (c * 40), 100 + (r * 40));
+			auto inv = new Invader(rect, position);
+			ships.push_back(inv);
+		}
+	}
 }
 
 void Update(RenderWindow &window)
