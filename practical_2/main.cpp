@@ -17,6 +17,8 @@ void Load()
 	}
 
 
+	ships.push_back(player);
+
 	for (int r = 0; r < invaders_rows; ++r)
 	{
 		auto rect = IntRect(0 + (r*32), 0, 32, 32);
