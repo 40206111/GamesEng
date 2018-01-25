@@ -16,6 +16,7 @@ void Load()
 		cerr << "Failed to load spritesheet!" << std::endl;
 	}
 
+	auto player = new Player();
 
 	ships.push_back(player);
 
