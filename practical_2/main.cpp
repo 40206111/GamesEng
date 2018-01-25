@@ -5,12 +5,6 @@
 using namespace sf;
 using namespace std;
 
-const Keyboard::Key controls[2] =
-{
-	Keyboard::Left,
-	Keyboard::Right
-};
-
 sf::Texture spritesheet;
 sf::Sprite invader;
 std::vector<Ship *> ships;
