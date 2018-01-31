@@ -9,5 +9,6 @@ public:
 	~Bullet() = default;
 protected:
 	Bullet();
+	//false = player bullet, true = enemy bullet
 	bool _mode;
 };
