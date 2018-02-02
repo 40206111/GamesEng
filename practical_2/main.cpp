@@ -2,11 +2,11 @@
 #include <iostream>
 #include "Ship.h"
 #include "game.h"
+#include "Bullet.h"
 using namespace sf;
 using namespace std;
 
 sf::Texture spritesheet;
-sf::Sprite invader;
 std::vector<Ship *> ships;
 
 void Load()
