@@ -7,6 +7,7 @@ class Ship : public sf::Sprite
 protected:
 	sf::IntRect _sprite;
 	Ship();
+	bool _exploded;
 	
 public:
 	explicit Ship(sf::IntRect ir);
@@ -14,6 +15,9 @@ public:
 	virtual ~Ship() = 0;
 
 	virtual void Update(const float &dt);
+
+	bool is_exploded() const;
+	virtual void Explode();
 };
 
 //INVADER

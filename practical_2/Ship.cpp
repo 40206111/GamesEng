@@ -1,5 +1,6 @@
 #include "Ship.h"
 #include "game.h"
+#include "Bullet.h"
 
 using namespace sf;
 using namespace std;
@@ -15,6 +16,12 @@ Ship::Ship(IntRect ir) : Sprite()
 };
 
 void Ship::Update(const float &dt) {}
+
+void Ship::Explode()
+{
+	setTextureRect(IntRect(128, 32, 32, 32));
+	_exploded = true;
+}
 
 Ship::~Ship() = default;
 
