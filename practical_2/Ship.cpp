@@ -17,12 +17,6 @@ Ship::Ship(IntRect ir) : Sprite()
 
 void Ship::Update(const float &dt) {}
 
-void Ship::Explode()
-{
-	setTextureRect(IntRect(128, 32, 32, 32));
-	_exploded = true;
-}
-
 Ship::~Ship() = default;
 
 //INVADER
@@ -72,5 +66,10 @@ void Player::Update(const float &dt)
 	if ((Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left)))
 	{
 		move(-100 * dt, 0);
+	}
+
+	if ((Keyboard::isKeyPressed(Keyboard::Space)))
+	{
+		Bullet::Fire(getPosition(), false);
 	}
 }

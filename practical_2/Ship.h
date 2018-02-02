@@ -16,7 +16,7 @@ public:
 
 	virtual void Update(const float &dt);
 
-	bool is_exploded() const;
+	bool is_exploded() const { return _exploded; }
 	virtual void Explode();
 };
 

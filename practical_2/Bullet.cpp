@@ -5,19 +5,29 @@ using namespace std;
 
 Bullet::Bullet() {};
 
-Bullet::Bullet(const::Vector2f &pos, const bool mode)
+unsigned char Bullet::bulletPointer = 0;
+Bullet Bullet::bullets[256];
+
+void Bullet::Fire(const::Vector2f &pos, const bool mode)
 {
-	setPosition(pos);
-	setOrigin(16, 16);
-	setTexture(spritesheet);
+	bullets[bulletPointer].setPosition(pos);
+	bullets[bulletPointer].setOrigin(16, 16);
+	bullets[bulletPointer].setTexture(spritesheet);
 	if (mode)
 	{
-		setTextureRect(IntRect(32,32, 32, 32));
+		bullets[bulletPointer].setTextureRect(IntRect(32,32, 32, 32));
 	}
 	else
 	{
-		setTextureRect(IntRect(64, 32, 32, 32));
+		bullets[bulletPointer].setTextureRect(IntRect(64, 32, 32, 32));
 	}
+	bulletPointer += 1;
+}
+
+void Ship::Explode()
+{
+	setTextureRect(IntRect(128, 32, 32, 32));
+	_exploded = true;
 }
 
 void Bullet::_Update(const float &dt)
