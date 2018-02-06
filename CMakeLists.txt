@@ -44,3 +44,14 @@ set_target_properties(PRACTICAL_2_INVADERS PROPERTIES
 	VS_DEBUGGER_WORKING_DIRECTORY
 	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration)
 	)
+	
+#### Practical 3 ####
+file(GLOB_RECURSE SOURCES practical_3/*.cpp practical_3/*.h)
+add_executable(PRACTICAL_3_MAZE ${SOURCES})
+target_include_directories(PRACTICAL_3_MAZE PRIVATE ${SFML_INCS})
+target_link_libraries(PRACTICAL_3_MAZE sfml-graphics)
+add_dependencies(PRACTICAL_3_MAZE copy_resources)
+set_target_properties(PRACTICAL_3_MAZE PROPERTIES
+	VS_DEBUGGER_WORKING_DIRECTORY
+	${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(Configuration)
+	)
