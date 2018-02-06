@@ -18,6 +18,7 @@ public:
 
 	bool is_exploded() const { return _exploded; }
 	virtual void Explode();
+	float fadeTime = 0.2;
 };
 
 //INVADER
