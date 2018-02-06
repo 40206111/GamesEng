@@ -7,7 +7,7 @@ class Ship : public sf::Sprite
 protected:
 	sf::IntRect _sprite;
 	Ship();
-	bool _exploded;
+	bool _exploded = false;
 	
 public:
 	explicit Ship(sf::IntRect ir);
