@@ -3,7 +3,9 @@
 using namespace sf;
 using namespace std;
 
-Bullet::Bullet() {};
+Bullet::Bullet() {
+	setPosition(-111, -111);
+};
 
 unsigned char Bullet::bulletPointer = 0;
 Bullet Bullet::bullets[256];
@@ -35,7 +37,7 @@ void Bullet::Render(sf::RenderWindow &window)
 
 void Bullet::Update(const float &dt)
 {
-	for (Bullet b : bullets)
+	for (Bullet &b : bullets)
 	{
 		b._Update(dt);
 	}
@@ -55,10 +57,10 @@ void Bullet::_Update(const float &dt)
 	}
 	else
 	{
-		move(0, dt * 200.0f * (_mode ? 1.0f : -1.0f));
+		move(0.0f, dt * 200.0f * (_mode ? 1.0f : -1.0f));
 		const FloatRect boundingBox = getGlobalBounds();
 
-		for (auto s : ships)
+		for (auto &s : ships)
 		{
 			if (!_mode && s == ships[0])
 			{
