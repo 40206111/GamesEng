@@ -58,6 +58,8 @@ Player::Player() : Ship(IntRect(160, 32, 32, 32))
 void Player::Update(const float &dt)
 {
 	Ship::Update(dt);
+	static float firetime = 0.0f;
+	firetime -= dt;
 	if ((Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right)))
 	{
 		move(100 * dt, 0);
@@ -68,10 +70,11 @@ void Player::Update(const float &dt)
 		move(-100 * dt, 0);
 	}
 
-	if ((Keyboard::isKeyPressed(Keyboard::Space)))
+	if (firetime <= 0 && (Keyboard::isKeyPressed(Keyboard::Space)))
 	{
 		sf::Vector2f pos = getPosition();
 		pos.x += 16;
 		Bullet::Fire(pos, false);
+		firetime = 0.7f;
 	}
 }
