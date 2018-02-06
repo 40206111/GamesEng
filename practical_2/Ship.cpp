@@ -34,6 +34,8 @@ float Invader::speed = 24;
 void Invader::Update(const float &dt)
 {
 	Ship::Update(dt);
+	static float firetime = 0.0f;
+	firetime -= dt;
 
 	move(dt * (direction ? 1.0f : -1.0f) * speed, 0);
 
@@ -45,6 +47,12 @@ void Invader::Update(const float &dt)
 		{
 			ships[i]->move(0, 24);
 		}
+	}
+
+	if (firetime <= 0 && rand() % 100 == 0)
+	{
+		Bullet::Fire(getPosition(), true);
+		firetime = 4.0f + (rand() % 60);
 	}
 }
 
