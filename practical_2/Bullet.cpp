@@ -21,7 +21,24 @@ void Bullet::Fire(const::Vector2f &pos, const bool mode)
 	{
 		bullets[bulletPointer].setTextureRect(IntRect(64, 32, 32, 32));
 	}
+	bullets[bulletPointer]._mode = mode;
 	bulletPointer += 1;
+}
+
+void Bullet::Render(sf::RenderWindow &window)
+{
+	for (Bullet b : bullets)
+	{
+		window.draw(b);
+	}
+}
+
+void Bullet::Update(const float &dt)
+{
+	for (Bullet b : bullets)
+	{
+		b._Update(dt);
+	}
 }
 
 void Ship::Explode()

@@ -70,6 +70,8 @@ void Player::Update(const float &dt)
 
 	if ((Keyboard::isKeyPressed(Keyboard::Space)))
 	{
-		Bullet::Fire(getPosition(), false);
+		sf::Vector2f pos = getPosition();
+		pos.x += 16;
+		Bullet::Fire(pos, false);
 	}
 }

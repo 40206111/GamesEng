@@ -52,10 +52,13 @@ void Update(RenderWindow &window)
 		window.close();
 	}
 
+	Bullet::Update(dt);
+
 	for (auto &s : ships)
 	{
 		s->Update(dt);
 	}
+
 }
 
 void Render(RenderWindow &window)
@@ -76,6 +79,7 @@ int main()
 		window.clear();
 		Update(window);
 		Render(window);
+		Bullet::Render(window);
 		window.display();
 	}
 	return 0;
