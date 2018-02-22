@@ -1,17 +1,25 @@
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
+#include "Player.h"
 using namespace sf;
 using namespace std;
 
 int gameWidth = 800;
 int gameHeight = 600;
+std::vector<Entity *> entities;
 
 void Render(RenderWindow &window)
 {
+	for (auto &e : entities)
+	{
+		e->render(window);
+	}
 }
 
 void Load()
 {
-
+	Entity *player = new Player();
+	entities.push_back(player);
 }
 
 void Update(RenderWindow &window)
@@ -32,6 +40,11 @@ void Update(RenderWindow &window)
 	if (Keyboard::isKeyPressed(Keyboard::Escape))
 	{
 		window.close();
+	}
+
+	for (auto &e : entities)
+	{
+		e->update(dt);
 	}
 }
 
