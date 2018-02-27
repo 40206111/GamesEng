@@ -17,6 +17,8 @@ public:
 	static sf::Color getColor(TILE t);
 	static void setColor(TILE t);
 	static void setColor(TILE t, sf::Color c);
+	static size_t getHeight() { return _height; }
+	static size_t getWidth() { return _width; }
 	//Get Tile at grid coordinate
 	static TILE getTile(sf::Vector2ul);
 	//Get Screenspace coordinate of tile
@@ -39,5 +41,5 @@ protected:
 
 private:
 	LevelSystem() = delete;
-	~LevelSystem = delete;
+	~LevelSystem() = delete;
 };
