@@ -29,7 +29,14 @@ file(GLOB_RECURSE SOURCE_FILES
 add_library(lib_tile_level_loader STATIC ${SOURCE_FILES})
 target_include_directories(lib_tile_level_loader INTERFACE
 		"${CMAKE_SOURCE_DIR}/lib_tile_level_loader/" PUBLIC ${SFML_INCS})
-target_link_libraries(lib_tile_level_loader sfml-graphics)
+target_link_libraries(lib_tile_level_loader lib_maths sfml-graphics)
+
+#### Maths lib ####
+add_library(lib_maths INTERFACE)
+target_sources(lib_maths INTERFACE
+	"${CMAKE_SOURCE_DIR}/lib_maths/maths.h")
+target_include_directories(lib_maths INTERFACE
+	"${CMAKE_SOURCE_DIR}/lib_maths" SYSTEM INTERFACE ${SFML_INCS})
 
 #### Practical 1 ####
 file(GLOB_RECURSE SOURCES practical_1/*.cpp practical_1/*.h)
